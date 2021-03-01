@@ -1,0 +1,58 @@
+$mobile: 375px;
+$l__mobile: 425px;
+$tablet: 768px;
+$laptop: 1024px;
+$m__laptop: 1366px;
+$l__laptop: 1440px;
+
+@mixin media($device) {
+  @if $device == mobile {
+    @media screen and (max-width: $mobile) {
+      @content;
+    }
+  }
+  @if $device == l__mobile {
+    @media screen and (max-width: $l__mobile) {
+      @content;
+    }
+  }
+  @if $device == tablet {
+    @media screen and (max-width: $tablet) {
+      @content;
+    }
+  }
+  @if $device == laptop {
+    @media screen and (max-width: $laptop) {
+      @content;
+    }
+  }
+  @if $device == m__laptop {
+    @media screen and (max-width: $m__laptop) {
+      @content;
+    }
+  }
+  @if $device == l__laptop {
+    @media screen and (min-width: $l__laptop) {
+      @content;
+    }
+  }
+}
+
+// @include media(m__laptop) {
+
+// }
+// @include media(laptop) {
+
+// }
+// @include media(tablet) {
+
+// }
+// @include media(l__mobile) {
+
+// }
+// @include media(mobile) {
+
+// }
+// @include media(l__laptop) {
+
+// }

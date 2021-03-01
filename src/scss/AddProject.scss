@@ -1,0 +1,77 @@
+@import "./mixins";
+@import "./variables";
+
+.modal {
+  @include flex(center, center, row, nowrap);
+
+  .addProject__form {
+    width: 90%;
+    height: 80%;
+    @include flex(center, center, column, nowrap);
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+
+    form {
+      width: 95%;
+      height: 90%;
+      @include flex(flex-start, flex-end, column, nowrap);
+      overflow-y: auto;
+
+      .stepper {
+        width: 100%;
+
+        .stepper__label {
+          span {
+            &:nth-child(2) {
+              span {
+                font-size: 1em;
+              }
+            }
+          }
+        }
+
+        .stepper__context {
+          div {
+            div {
+              .stepContent__fields {
+                margin: 15px 0;
+              }
+
+              .stepper__buttons {
+                margin-top: 5px;
+                button {
+                  margin-right: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .stepper__upload__container {
+        width: 100%;
+        padding: 20px;
+
+        p {
+          margin: 10px 0;
+        }
+
+        button {
+          margin-right: 5px;
+          padding: 5px 20px;
+          border: 1px solid blueviolet;
+          border-radius: 5px;
+          outline: none;
+          background-color: transparent;
+
+          &:nth-child(3) {
+            color: white;
+            background-color: blueviolet;
+          }
+        }
+      }
+    }
+  }
+}

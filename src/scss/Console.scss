@@ -1,0 +1,69 @@
+@import './mixins';
+@import './variables';
+
+.console {
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  @include flex(center, center);
+
+  .console__background {
+    @include backgroundImage(
+      'http://www.gstatic.com/mobilesdk/190805_mobilesdk/woman-at-desktop@2x.png',
+      top
+    );
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    z-index: -1;
+  }
+
+  .console__container {
+    margin-top: 10%;
+    width: 100%;
+    @include flex(center, center);
+
+    .console__addProject {
+      width: 300px;
+      height: 200px;
+      @include flex(center, center, column, nowrap);
+      border-radius: 10px;
+      // box-shadow: -3px -3px 5px rgba(255, 255, 255, 1),
+      //   3px 3px 5px rgba(36, 27, 27, 0.25);
+      box-shadow: -1px -1px 2px rgba(36, 27, 27, 0.2),
+        1px 1px 2px rgba(36, 27, 27, 0.2);
+      padding: 10px;
+      margin: 10px;
+      background: #f8f8f8;
+
+      .console__createProject {
+        width: 100%;
+        height: 100%;
+        @include flex(center, center, column, nowrap);
+        cursor: pointer;
+
+        button {
+          @include flex(center, center, column, nowrap);
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          border: none;
+          outline: none;
+          font-size: 1.2em;
+
+          svg {
+            font-size: 1.5em;
+          }
+        }
+      }
+
+      a {
+        width: 100%;
+        height: 20%;
+        @include flex(center, center, column, nowrap);
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+}

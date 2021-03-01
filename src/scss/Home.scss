@@ -1,0 +1,102 @@
+@import './mixins';
+@import './variables';
+@import './mediaQueries';
+
+.home {
+  width: 100%;
+  // height: 100vh;
+  padding: 60px 0 20px 0;
+  // @include backgroundImage('../images/backgrounds/mainBackground.svg');
+  @include flex();
+
+  .home__title {
+    width: 100%;
+    padding: 50px 20px;
+
+    h1 {
+      font-weight: bold;
+      text-align: center;
+      word-spacing: 2px;
+      line-height: 1.5em;
+
+      // media
+      @include media(m__laptop) {
+        font-size: 2.5em;
+      }
+      @include media(laptop) {
+        font-size: 2em;
+      }
+      @include media(tablet) {
+        font-size: 2em;
+      }
+      @include media(l__mobile) {
+        font-size: 1.5em;
+      }
+      @include media(mobile) {
+        font-size: 1.5em;
+      }
+      @include media(l__laptop) {
+        font-size: 2.5em;
+      }
+    }
+  }
+
+  .home__demo {
+    width: 100%;
+    @include flex(space-around);
+    padding: 50px 20px 10px 20px;
+
+    > div {
+      width: 50%;
+
+      &.home__demo__text {
+        padding: 5px;
+        @include flex($direction: column);
+
+        p {
+          font-size: 1.1em;
+          line-height: 1.5em;
+
+          // media
+          @include media(tablet) {
+            font-size: 1em;
+          }
+        }
+
+        .home__demo__text__buttons {
+          padding: 15px 0;
+
+          button {
+            padding: 2px 5px;
+            margin: 2px 5px;
+          }
+
+          // media
+          @include media(tablet) {
+            width: 100%;
+            font-size: 1em;
+          }
+        }
+
+        // media
+        @include media(tablet) {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      &.home__demo__terminal {
+        @include media(tablet) {
+          width: 100%;
+        }
+        @include media(l__mobile) {
+          display: none;
+        }
+      }
+    }
+
+    @include media(tablet) {
+      padding: 20px 20px 10px 20px;
+    }
+  }
+}

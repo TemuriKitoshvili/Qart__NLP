@@ -1,0 +1,194 @@
+@import './mixins';
+@import './variables';
+@import './mediaQueries';
+
+.dashboard {
+  width: 100%;
+  height: 100%;
+  padding: 60px 0px 10px 0px;
+  @include flex($justify: space-between, $wrap: nowrap);
+
+  .dashboard__leftSidebar {
+    width: 15%;
+    height: calc(100% - 20px);
+    @include flex($direction: column, $wrap: nowrap);
+    background-color: white;
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 1),
+      1px 1px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin: 15px 0px 15px 5px;
+    padding: 5px;
+    transition: 0.3s ease-in-out;
+    z-index: 5;
+
+    .project__lists {
+      width: 100%;
+      padding: 10px 0;
+      border-bottom: 1px solid #a9b2bb;
+
+      > div {
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+    .project__tools {
+      width: 100%;
+      flex: 1;
+      margin: 10px 0;
+      @include flex(flex-start, center, column, nowrap);
+      padding: 20px 0;
+      border-bottom: 1px solid #a9b2bb;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      .accordionModule {
+        position: relative;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+
+        .accordionModule__summary {
+          padding: 0 2px;
+        }
+
+        .accordionModule__details {
+          @include flex(flex-start, center, column, nowrap);
+          padding: 2px;
+
+          button {
+            width: 100%;
+            @include flex($align: center, $wrap: nowrap);
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 5px 0;
+            font-size: 0.9em;
+
+            &:hover {
+              background: gainsboro;
+            }
+
+            span {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .dashboard__toggleButon {
+      width: 100%;
+      padding: 5px;
+      @include flex(center, center, $wrap: nowrap);
+      cursor: pointer;
+
+      // media
+      @include media(tablet) {
+        display: none;
+      }
+    }
+
+    // toggle
+    &.toggle {
+      width: 5%;
+
+      .project__tools {
+        .accordionModule {
+          .accordionModule__details {
+            button {
+              @include flex($justify: center, $align: center, $wrap: nowrap);
+
+              // media
+              @include media(tablet) {
+                @include flex($align: center, $wrap: nowrap);
+              }
+
+              span {
+                display: none;
+
+                // media
+                @include media(tablet) {
+                  display: inline-block;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .dashboard__toggleButon {
+        @include flex(center, center, $wrap: nowrap);
+        width: 100%;
+
+        svg {
+          transform: rotate(-180deg);
+        }
+
+        @include media(tablet) {
+          display: none;
+        }
+      }
+
+      @include media(tablet) {
+        left: 0%;
+        width: 30%;
+        padding: 5px;
+      }
+
+      @include media(l__mobile) {
+        left: 0%;
+        width: 60%;
+        padding: 5px;
+      }
+    }
+
+    @include media(tablet) {
+      position: fixed;
+      width: 30%;
+      height: 100%;
+      left: -35%;
+      bottom: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    @include media(l__mobile) {
+      position: fixed;
+      width: 60%;
+      height: 100%;
+      left: -65%;
+      bottom: 0;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .dashboard__mainContainer {
+    width: 85%;
+    height: 100%;
+    flex: 1;
+    border-radius: 5px;
+    margin: 5px 5px 5px 0;
+    padding: 10px;
+
+    .sidebar__toggleButton {
+      display: none;
+      z-index: 5;
+
+      // media
+      @include media(tablet) {
+        display: inline-block;
+        position: fixed;
+        bottom: 2%;
+        left: 4%;
+      }
+    }
+
+    // media
+    @include media(tablet) {
+      height: fit-content;
+      margin: 0px;
+    }
+  }
+}

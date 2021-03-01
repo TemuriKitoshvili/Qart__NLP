@@ -1,0 +1,10 @@
+@import '../mixins';
+@import '../variables';
+
+.PopoverModuleWord {
+  text-decoration: underline;
+}
+
+.popup__modal {
+  @include flex(space-between, flex-start, column, nowrap);
+}

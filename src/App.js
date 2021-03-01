@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import './scss/App.scss';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// configs
+import ProtectedRoute from './components/configs/ProtectedRoute';
+// state
+import { useStateValue } from './components/state/stateProvider';
+// components
+import Header from './components/Header';
+import Home from './components/Home';
+import Console from './components/Console';
+import Dashboard from './components/Dashboard';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
+  const [{ user, projects }, dispatch] = useStateValue();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <Router>
+        <Header />
+        <Switch>
+          {/* public routes */}
+          <Route exact path='/' component={Home} />
+
+          {/* protected routes */}
+          <ProtectedRoute
+            path='/dashboard/:id'
+            component={Dashboard}
+            isAuth={user}
+          />
+          <ProtectedRoute
+            exact
+            path='/dashboard'
+            component={Console}
+            isAuth={user}
+          />
+
+          {/* error page */}
+          <Route path='*' component={Home} />
+        </Switch>
+      </Router>
     </div>
   );
 }
